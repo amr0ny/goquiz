@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package protos.quiz;
+
+option go_package = "./goquiz/protos/quiz";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "github.com/amr0ny/goquiz/protos/commmon.proto";
+
+service QuizService {
+    rpc CreateQuiz(CreateQuizRequest) returns (google.protobuf.Empty) {}
+    rpc RetrieveQuiz(RetrieveQuizRequest) returns (RetrieveQuizResponse) {}
+}
+
+message CreateQuizRequest {
+    string name = 1;
+    string description = 2;
+}
+
+message RetrieveQuizRequest {
+    string id = 1;
+}
+
+
+message RetrieveQuizResponse {
+    string name = 1;
+    string description = 2;
+    repeated common.Question questions = 3;
+    google.protobuf.Timestamp created_at = 4;
+}

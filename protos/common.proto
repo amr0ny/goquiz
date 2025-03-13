@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package protos.common;
+
+option go_package = "./goquiz/protos/common";
+
+enum QuestionType {
+    QUESTION_TYPE_UNSPECIFIED = 0;  // Неопределенный (по умолчанию)
+    SINGLE_CHOICE = 1;  // Одиночный выбор (radio button)
+    MULTIPLE_CHOICE = 2;  // Множественный выбор (checkboxes)
+    OPEN_ENDED = 3;  // Текстовый ответ
+    NUMERIC_INPUT = 4;  // Числовой ввод
+    RANKING = 5;  // Ранжирование
+    SCALE = 6;  // Оценочная шкала (например, от 1 до 10)
+}
+
+message Question {
+    string id = 1;
+    string text = 2;
+    QuestionType question_type = 3;
+    repeated string options = 4;
+}

@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package protobuf;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "./goquiz/protos";
+
+service QuestionService {
+    rpc AddQuestion(AddQuestionRequest) returns (google.protobuf.Empty) {}
+    rpc FulfillQuestion(FulfillQuestionRequest) returns (FulfillQuestionResponse) {}
+    rpc RetrieveQuestions(RetrieveQuestionsRequest) returns (RetrieveQuestionsResponse) {}
+}
+
+message AddQuestionRequest {
+    Question question = 1;
+}
+message Answer {
+    oneof answer {
+        string single_choice = 2;  // Одиночный выбор
+        repeated string multiple_choice = 3;  // Множественный выбор
+        string open_ended = 4;  // Текстовый ответ
+        int32 numeric_input = 5;  // Числовой ввод
+        repeated string ranking = 6;  // Ранжирование
+        int32 scale = 7;  // Оценочная шкала
+    }
+}
+message FulfillQuestionRequest {
+    string id = 1;
+    Answer answer = 2;
+}
+
+message FulfillQuestionResponse {
+    string id = 1;
+    bool is_correct = 2;
+}
+
+message RetrieveQuestionsRequest {
+    string quiz_id = 1;
+    string page_size = 2;
+    string page_token = 3;
+}
+
+message RetrieveQuestionsResponse {
+    repeated Question questions = 1;
+    string next_page_token = 2;
+    int32 count = 3;
+}
