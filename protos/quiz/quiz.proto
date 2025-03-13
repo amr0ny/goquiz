@@ -2,11 +2,12 @@ syntax = "proto3";
 
 package protos.quiz;
 
-option go_package = "./goquiz/protos/quiz";
+option go_package = "protos/quiz";
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
-import "github.com/amr0ny/goquiz/protos/commmon.proto";
+import "github.com/amr0ny/goquiz/protos/common/common.proto";
+
 
 service QuizService {
     rpc CreateQuiz(CreateQuizRequest) returns (google.protobuf.Empty) {}

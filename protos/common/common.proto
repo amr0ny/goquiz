@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package protos.common;
 
-option go_package = "./goquiz/protos/common";
+option go_package = "protos/common";
 
 enum QuestionType {
     QUESTION_TYPE_UNSPECIFIED = 0;  // Неопределенный (по умолчанию)
