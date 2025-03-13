@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"api/common"
-	common2 "github.com/amr0ny/goquiz/common"
+	"github.com/amr0ny/goquiz/api/common"
+	common2 "github.com/amr0ny/goquiz/api/common"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"net/http"

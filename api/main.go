@@ -3,12 +3,12 @@ package main
 //TIP <p>To run your code, right-click the code and select <b>Run</b>.</p> <p>Alternatively, click
 // the <icon src="AllIcons.Actions.Execute"/> icon in the gutter and select the <b>Run</b> menu item from here.</p>
 import (
-	"api/handlers"
-	"api/middleware"
 	"context"
 	"errors"
 	"fmt"
-	"github.com/amr0ny/goquiz/common/common"
+	"github.com/amr0ny/goquiz/api/handlers"
+	"github.com/amr0ny/goquiz/api/middleware"
+	"github.com/amr0ny/goquiz/common/logger"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"net/http"
