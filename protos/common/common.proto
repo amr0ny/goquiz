@@ -5,13 +5,10 @@ package protos.common;
 option go_package = "protos/common";
 
 enum QuestionType {
-    QUESTION_TYPE_UNSPECIFIED = 0;  // Неопределенный (по умолчанию)
-    SINGLE_CHOICE = 1;  // Одиночный выбор (radio button)
-    MULTIPLE_CHOICE = 2;  // Множественный выбор (checkboxes)
-    OPEN_ENDED = 3;  // Текстовый ответ
-    NUMERIC_INPUT = 4;  // Числовой ввод
-    RANKING = 5;  // Ранжирование
-    SCALE = 6;  // Оценочная шкала (например, от 1 до 10)
+    SINGLE_CHOICE = 0;  // Одиночный выбор (radio button)
+    MULTIPLE_CHOICE = 1;  // Множественный выбор (checkboxes)
+    OPEN_ENDED = 2;  // Текстовый ответ
+    NUMERIC_INPUT = 3;  // Числовой ввод
 }
 
 message Question {
@@ -19,4 +16,20 @@ message Question {
     string text = 2;
     QuestionType question_type = 3;
     repeated string options = 4;
+}
+
+message MutlipleChoiceAnswer {
+    repeated string multiple_choice = 3;
+}
+message Answer {
+    oneof answer {
+        string single_choice = 1;      // Одиночный выбор
+        MultipleChoiceAnswer multiple_choice = 2; // Множественный выбор (с массивом)
+        string open_ended = 3;         // Текстовый ответ
+        int32 numeric_input = 4;       // Числовой ввод
+    }
+}
+
+message MultipleChoiceAnswer {
+    repeated string options = 1;  // Массив для множественного выбора
 }

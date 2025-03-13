@@ -1,4 +1,4 @@
-module quizservice
+module github.com/amr0ny/goquiz/quizservice
 
 go 1.24.0
 

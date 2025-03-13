@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package protos.question;
+
+option go_package = "protos/question";
+
+import "google/protobuf/empty.proto";
+import "protos/common/common.proto";
+
+service QuestionService {
+    rpc AddQuestion(AddQuestionRequest) returns (google.protobuf.Empty) {}
+    rpc FulfillQuestion(FulfillQuestionRequest) returns (FulfillQuestionResponse) {}
+    rpc RetrieveQuestions(RetrieveQuestionsRequest) returns (RetrieveQuestionsResponse) {}
+}
+
+message FulfillQuestionRequest {
+    string id = 1;
+    common.Answer answer = 2;
+}
+
+message FulfillQuestionResponse {
+    string id = 1;
+    bool is_correct = 2;
+}
+
+message RetrieveQuestionsRequest {
+    string quiz_id = 1;
+    string page_size = 2;
+    string page_token = 3;
+}
+
+message RetrieveQuestionsResponse {
+    repeated common.Question questions = 1;
+    string next_page_token = 2;
+    int32 count = 3;
+}
+
+message AddQuestionRequest {
+    common.Question question = 1;
+}

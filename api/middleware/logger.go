@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"api/common"
+	common2 "github.com/amr0ny/goquiz/common"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"net/http"
@@ -9,7 +10,7 @@ import (
 )
 
 func LoggerMiddleware(c *gin.Context) {
-	log, err := common.GetLogger()
+	log, err := common2.GetLogger()
 	if err != nil {
 		common.ErrorResponse(c, err.Error(), http.StatusInternalServerError)
 		return

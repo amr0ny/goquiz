@@ -2,10 +2,10 @@ package quizservice
 
 import (
 	"fmt"
+	"github.com/amr0ny/goquiz/common/common"
 	"github.com/sirupsen/logrus"
 	"net/http"
 	"os"
-	"quizservice/common"
 	"strings"
 )
 
